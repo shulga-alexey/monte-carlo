@@ -1,6 +1,6 @@
 """Решения задач домашнего задания №5."""
-from math import exp, factorial
-from random import random
+from math import exp, factorial, modf, sqrt
+from random import gauss, random
 
 from mixins import Basic
 
@@ -19,6 +19,36 @@ class Task1(Basic):
             self.histogram.Fill(num)
 
         super()._get_histogram()
+
+
+class Task2(Basic):
+    """Задание 2."""
+
+    def __init__(self, n, p, *args):
+        """Конструктор."""
+        super().__init__(*args)
+
+        nums = [self.__binomial(i, n, p) for i in range(n)]
+
+        for _ in range(super().ENTRIES):
+            r = random()
+
+            for i in range(n):
+                sum_lower, sum_upper = sum(nums[:i]), sum(nums[:i + 1])
+
+                if sum_lower <= r <= sum_upper:
+                    self.histogram.Fill(i)
+                    break
+
+        super()._get_histogram()
+
+    @staticmethod
+    def __binomial(m, n, p):
+        """Биномиальное распределение."""
+        return (
+            factorial(n) * (p ** m) * ((1 - p) ** (n - m))
+            / (factorial(m) * factorial(n - m))
+        )
 
 
 class Task3(Basic):
@@ -81,17 +111,40 @@ class Task4(Basic):
 class Task5(Basic):
     """Задание 5."""
 
-    def __init__(self):
+    def __init__(self, M, *args):
         """Конструктор."""
-        pass
+        super().__init__(*args)
+
+        q = 0
+        r = 0
+        cov = 0
+        for _ in range(M):
+            q = random()
+            r = M * q
+            cov += (q - 0.5) * (r - 0.5)
+            self.histogram.Fill(r)
+
+        cor = cov * 12 / M
+        print(f'cor = {cor}')
+
+        super()._get_histogram()
 
 
 class Task7(Basic):
     """Задание 7."""
 
-    def __init__(self):
+    def __init__(self, n, p, *args):
         """Конструктор."""
-        pass
+        super().__init__(*args)
+
+        q = intpart = None
+
+        for _ in range(super().ENTRIES):
+            q = gauss(mu=0.0, sigma=1.0)
+            _, intpart = modf(n * p + q * sqrt(n * p * (1 - p)))
+            self.histogram.Fill(intpart)
+
+        super()._get_histogram()
 
 
 class Task8(Basic):
