@@ -1,44 +1,49 @@
-from basic import Basic
-from math import factorial, exp
+"""Решения задач домашнего задания №5."""
+from math import exp, factorial
 from random import random
+
+from mixins import Basic
 
 
 class Task1(Basic):
     """Задание 1."""
 
-    def __init__(self, g, M, m):
+    def __init__(self, g, M, m, *args):
         """Конструктор."""
-        self.nums = [m / M for m in self.__gen_m(g, M, m)]
+        super().__init__(*args)
 
-    @staticmethod
-    def __gen_m(g, M, m):
-        """Генератор m."""
-        for _ in range(Task1.ENTRIES):
+        num = 0
+        for _ in range(super().ENTRIES):
             m = (g * m) % M
-            yield m
+            num = m / M
+            self.histogram.Fill(num)
+
+        super()._get_histogram()
 
 
 class Task3(Basic):
     """Задание 3."""
 
-    def __init__(self, n, p):
+    def __init__(self, n, p, *args):
         """Конструктор."""
-        self.nums = [0] * super().ENTRIES
+        super().__init__(*args)
 
-        for i in range(super().ENTRIES):
+        for _ in range(super().ENTRIES):
             m = 0
             r = random()
-            psi = self.__p_bi_neg(m, n, p)
+            psi = self.__pascal(m, n, p)
 
             while r > 0:
                 m += 1.
                 r = r - psi
                 psi = psi * (m + n - 1.) / m * (1. - p)
 
-            self.nums[i] = m - 1.
+            self.histogram.Fill(m - 1.)
+
+        super()._get_histogram()
 
     @staticmethod
-    def __p_bi_neg(m, n, p):
+    def __pascal(m, n, p):
         """Биномиальное отрицательное распределение."""
         return (
             factorial(m + n - 1) * (p ** n) * ((1 - p) ** m)
@@ -49,20 +54,23 @@ class Task3(Basic):
 class Task4(Basic):
     """Задание 4."""
 
-    def __init__(self, n, p):
+    def __init__(self, n, p, *args):
         """Конструктор."""
-        self.nums = [0] * super().ENTRIES
+        super().__init__(*args)
 
-        for i in range(super().ENTRIES):
+        for _ in range(super().ENTRIES):
             m = 0
             r = random()
             psi = self.__poisson(m, n, p)
+
             while r > 0:
                 m += 1
                 r = r - psi
                 psi = psi * n / m
 
-            self.nums[i] = m - 1.
+            self.histogram.Fill(m - 1.)
+
+        super()._get_histogram()
 
     @staticmethod
     def __poisson(m, n, p):
@@ -89,16 +97,18 @@ class Task7(Basic):
 class Task8(Basic):
     """Задание 8."""
 
-    def __init__(self):
+    def __init__(self, lmbd, *args):
         """Конструктор."""
-        pass
+        super().__init__(*args)
 
+        for _ in range(super().ENTRIES):
+            m = 0
+            q = random()
 
-if __name__ == '__main__':
-    A = 13, 17, 3
-    B = 5 ** 17, 2 ** 42, 1
-    Task1(*A).hist('Task 1(A)')
-    Task1(*B).hist('Task 1(B)')
+            while q >= exp(-lmbd):
+                m += 1
+                q *= random()
 
-    Task3(10, 0.1).hist()
-    Task4(5, 0.1).hist()
+            self.histogram.Fill(m)
+
+        super()._get_histogram()
