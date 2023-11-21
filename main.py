@@ -1,5 +1,6 @@
 """Отвечает за запуск примеров заданий."""
 from sys import argv
+
 from hw5 import Task1, Task2, Task3, Task4, Task5, Task7, Task8
 
 if argv[1] == '5':

@@ -6,6 +6,7 @@ class Basic:
     """Класс для создания гистограмм."""
 
     ENTRIES = 10000
+    HW_NUM = 5
 
     def __init__(self, name, *args):
         """Создаются экземпляры классов Canvas и  Histogram."""
@@ -22,4 +23,4 @@ class Basic:
         """Сохраняется созданная гистограмма."""
         self.histogram.Draw()
         self.canvas.Update()
-        self.canvas.Print(f'./img/{self.name}.png')
+        self.canvas.Print(f'./img/hw{self.HW_NUM}/{self.name}.png')
