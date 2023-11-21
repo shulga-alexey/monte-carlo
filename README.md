@@ -28,6 +28,7 @@
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task5%20(B)%3A%20%7BM*gamma%7D%2010%5E7.png)
 
 **Задание №6 ::** Найти N, на которое приходится максимум распределения Пауссона.
+
 **Задание №7 ::** Построить биномиальное распределение Bi(50, 1/3).
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task7%20%3A%20Bi(50%2C%200.33).png)
 
