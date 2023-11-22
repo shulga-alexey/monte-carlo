@@ -111,16 +111,21 @@ class Task4(Basic):
 class Task5(Basic):
     """Задание 5."""
 
-    def __init__(self, M, *args):
+    def __init__(self, M, intpart=True, *args):
         """Конструктор."""
         super().__init__(*args)
+
+        r_func = (
+            (lambda x: modf(x * M)[1]) if intpart else
+            (lambda x: modf(x * M)[0])
+        )
 
         q = 0
         r = 0
         cov = 0
         for _ in range(M):
             q = random()
-            r = M * q
+            r = r_func(q)
             cov += (q - 0.5) * (r - 0.5)
             self.histogram.Fill(r)
 

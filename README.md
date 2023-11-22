@@ -1,10 +1,20 @@
 # Monte-Carlo
 
-Чтобы запустить задание:
+## Установка и запуск
+
+Для локальной установки:
+
+    `git clone git@github.com:shulga-alexey/monte-carlo.git`
+
+Для построения гистограмм здесь используется PyROOT:
+
+    `pip install pyroot`
+
+Чтобы запустить задание выполните:
 
     `python3 main.py <номер ДЗ> <номер задачи> <подзадача(буква: a,b,...)>`
 
-Ответ на задание можно найти в `/img/hw`.
+Ответ на задание можно найти в `./img/hw<номер ДЗ>`.
 
 ## ДЗ№5 (задачи 1-8): файл hw5.py
 
@@ -31,8 +41,6 @@
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task5%20(A)%3A%20%7BM*gamma%7D%2010%5E6.png)
 
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task5%20(B)%3A%20%7BM*gamma%7D%2010%5E7.png)
-
-**Задание №6 ::** Найти N, на которое приходится максимум распределения Пауссона.
 
 **Задание №7 ::** Построить биномиальное распределение Bi(50, 1/3).
 
