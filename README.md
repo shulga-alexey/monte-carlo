@@ -38,9 +38,9 @@
 
 **Задание №5 ::** Сгенерировать M значений случайной величины g~U[0,1] и построить {Mg}.
 
-![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task5%20(A)%3A%20%7BM*gamma%7D%2010%5E6.png)
+![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task5%20(A)%3A%20%5BM*gamma%5D.png)
 
-![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task5%20(B)%3A%20%7BM*gamma%7D%2010%5E7.png)
+![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task5%20(B)%3A%20%7BM*gamma%7D.png)
 
 **Задание №7 ::** Построить биномиальное распределение Bi(50, 1/3).
 
