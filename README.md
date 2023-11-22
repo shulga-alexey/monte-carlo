@@ -4,15 +4,15 @@
 
 Для локальной установки:
 
-    `git clone git@github.com:shulga-alexey/monte-carlo.git`
+    git clone git@github.com:shulga-alexey/monte-carlo.git
 
 Для построения гистограмм здесь используется PyROOT:
 
-    `pip install pyroot`
+    pip install pyroot
 
 Чтобы запустить задание выполните:
 
-    `python3 main.py <номер ДЗ> <номер задачи> <подзадача(буква: a,b,...)>`
+    python3 main.py <номер ДЗ> <номер задачи> <подзадача(буква: a,b,...)>
 
 Ответ на задание можно найти в `./img/hw<номер ДЗ>`.
 
