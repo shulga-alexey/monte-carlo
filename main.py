@@ -17,9 +17,9 @@ if argv[1] == '5':
         Task4(5, 0.1,  'Task4 : Poisson(5, 0.1)', 20, 0, 20)
     elif argv[2] == '5':
         if argv[3] == 'a':
-            Task5(10**6, 'Task5 (A): {M*gamma} 10^6', 100, 0, 10**6)
+            Task5(10**6, True, 'Task5 (A): [M*gamma]', 100, 0, 10**6)
         elif argv[3] == 'b':
-            Task5(10**7, 'Task5 (B): {M*gamma} 10^7', 100, 0, 10**7)
+            Task5(10**6, False, 'Task5 (B): {M*gamma}', 100, 0, 1)
     elif argv[2] == '6':
         pass
     elif argv[2] == '7':
