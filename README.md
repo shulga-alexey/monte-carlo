@@ -1,11 +1,4 @@
 # Monte-Carlo
-<<<<<<< HEAD
-Чтобы запустить задание:
-    `python3 main.py <номер ДЗ> <номер задачи> <подзадача(буква: a,b,...)>`
-Ответ на задание можно найти в `/img`.
-
-Репозиторий включает решения ДЗ№5 (задачи 1-8): файл hw5.py
-=======
 
 ## Установка и запуск
 
@@ -60,4 +53,3 @@
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task8%20(B)%3A%20Poisson(lambda%3D20).png)
 
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task8%20(C)%3A%20Poisson(lambda%3D100).png)
->>>>>>> origin/main

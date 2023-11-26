@@ -8,26 +8,19 @@ from mixins import Basic
 class Task1(Basic):
     """Задание 1."""
 
-    def __init__(self, g, M, m, *args):
-        """Конструктор."""
-        super().__init__(*args)
-
-        num = 0
+    def __call__(self, g, M, m):
+        """Решение."""
         for _ in range(super().ENTRIES):
             m = (g * m) % M
             num = m / M
             self.histogram.Fill(num)
 
-        super()._get_histogram()
-
 
 class Task2(Basic):
     """Задание 2."""
 
-    def __init__(self, n, p, *args):
-        """Конструктор."""
-        super().__init__(*args)
-
+    def __call__(self, n, p):
+        """Решение."""
         nums = [self.__binomial(i, n, p) for i in range(n)]
 
         for _ in range(super().ENTRIES):
@@ -39,8 +32,6 @@ class Task2(Basic):
                 if sum_lower <= r <= sum_upper:
                     self.histogram.Fill(i)
                     break
-
-        super()._get_histogram()
 
     @staticmethod
     def __binomial(m, n, p):
@@ -54,10 +45,8 @@ class Task2(Basic):
 class Task3(Basic):
     """Задание 3."""
 
-    def __init__(self, n, p, *args):
-        """Конструктор."""
-        super().__init__(*args)
-
+    def __call__(self, n, p):
+        """Решение."""
         for _ in range(super().ENTRIES):
             m = 0
             r = random()
@@ -69,8 +58,6 @@ class Task3(Basic):
                 psi = psi * (m + n - 1.) / m * (1. - p)
 
             self.histogram.Fill(m - 1.)
-
-        super()._get_histogram()
 
     @staticmethod
     def __pascal(m, n, p):
@@ -84,10 +71,8 @@ class Task3(Basic):
 class Task4(Basic):
     """Задание 4."""
 
-    def __init__(self, n, p, *args):
-        """Конструктор."""
-        super().__init__(*args)
-
+    def __call__(self, n, p):
+        """Решение."""
         for _ in range(super().ENTRIES):
             m = 0
             r = random()
@@ -100,8 +85,6 @@ class Task4(Basic):
 
             self.histogram.Fill(m - 1.)
 
-        super()._get_histogram()
-
     @staticmethod
     def __poisson(m, n, p):
         """Распределение Пуассона."""
@@ -111,17 +94,13 @@ class Task4(Basic):
 class Task5(Basic):
     """Задание 5."""
 
-    def __init__(self, M, intpart=True, *args):
-        """Конструктор."""
-        super().__init__(*args)
-
+    def __call__(self, M, intpart=True):
+        """Решение."""
         r_func = (
             (lambda x: modf(x * M)[1]) if intpart else
             (lambda x: modf(x * M)[0])
         )
 
-        q = 0
-        r = 0
         cov = 0
         for _ in range(M):
             q = random()
@@ -129,36 +108,25 @@ class Task5(Basic):
             cov += (q - 0.5) * (r - 0.5)
             self.histogram.Fill(r)
 
-        cor = cov * 12 / M
-        print(f'cor = {cor}')
-
-        super()._get_histogram()
+        print(f'cor = {cov * 12 / M}')
 
 
 class Task7(Basic):
     """Задание 7."""
 
-    def __init__(self, n, p, *args):
-        """Конструктор."""
-        super().__init__(*args)
-
-        q = intpart = None
-
+    def __call__(self, n, p):
+        """Решение."""
         for _ in range(super().ENTRIES):
-            q = gauss(mu=0.0, sigma=1.0)
+            q = gauss(mu=0., sigma=1.)
             _, intpart = modf(n * p + q * sqrt(n * p * (1 - p)))
             self.histogram.Fill(intpart)
-
-        super()._get_histogram()
 
 
 class Task8(Basic):
     """Задание 8."""
 
-    def __init__(self, lmbd, *args):
-        """Конструктор."""
-        super().__init__(*args)
-
+    def __call__(self, lmbd):
+        """Решение."""
         for _ in range(super().ENTRIES):
             m = 0
             q = random()
@@ -168,5 +136,3 @@ class Task8(Basic):
                 q *= random()
 
             self.histogram.Fill(m)
-
-        super()._get_histogram()
