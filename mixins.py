@@ -26,6 +26,6 @@ class Basic:
         self.histogram.Draw()
 
         canvas.Update()
-        canvas.Print(f'./img/hw{self.HW_NUM}/{self.name}.png')
+        canvas.Print(f'./img/hw{self.HW_NUM}/{name}.png')
 
         time.sleep(4)
