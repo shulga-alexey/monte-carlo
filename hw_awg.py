@@ -41,7 +41,7 @@ class BasicGraphErrors:
 
         self.graph_text = TPaveText(0.67, 0.6, 0.87, 0.45, "NDC")
 
-        self.function = TF1('fun1', '[0]*x+[1]', 0, 10)
+        self.function = TF1('fun1', '[0]*x+[1]', 0, 100)
         self.function.SetLineColor(4)
         self.function.SetLineWidth(2)
 
@@ -72,11 +72,12 @@ class Task1(BasicGraphErrors):
         a, b = params
         residuals = self.points[:, 1] - a * self.points[:, 0] + b
         likelihoods = (
-            1 / (np.sqrt(2 * np.pi) * self.errors[:, 1]) *
-            np.exp(-0.5 * ((residuals / self.errors[:, 1]) ** 2))
+            -np.log(2 * np.pi) / 2 - np.log(self.errors[:, 1]) -
+            ((residuals / self.errors[:, 1]) ** 2) / 2
         )
-
-        return -np.sum(np.log(likelihoods))
+        # Возвращаем отрицательный логарифм функции правдоподобия
+        # (так как minimize ищет минимум)
+        return -np.sum(likelihoods) 
 
     def solution_by_scipy(self):
         """Решение №1.
@@ -127,7 +128,7 @@ class Task1(BasicGraphErrors):
 if __name__ == '__main__':
     Task1(
         1,
-        [[1, 4], [3, 6], [5, 10]],
+        [[15, 18], [19, 21], [23, 26]],
         [[0.1, 0.15], [0.2, 0.25], [0.3, 0.35]]
     )
     Task1(
