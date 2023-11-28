@@ -70,7 +70,7 @@ class Task1(BasicGraphErrors):
     def _likelihood_function(self, params):
         """Отрицательный логарифм функции правдоподобия."""
         a, b = params
-        residuals = self.points[:, 1] - a * self.points[:, 0] + b
+        residuals = self.points[:, 1] - a * self.points[:, 0] - b
         likelihoods = (
             -np.log(2 * np.pi) / 2 - np.log(self.errors[:, 1]) -
             ((residuals / self.errors[:, 1]) ** 2) / 2
@@ -89,12 +89,12 @@ class Task1(BasicGraphErrors):
         result = minimize(self._likelihood_function, initial_guess)
         p1, p0 = result.x
 
-        self.function.SetParameters(p1, -p0)
+        self.function.SetParameters(p1, p0)
 
         self.function_text.SetTextAlign(12)
         self.function_text.SetFillColor(43)
         self.function_text.AddText('BLUE: scipy')
-        self.function_text.AddText(f'p0:   {-round(p0, 2)}')
+        self.function_text.AddText(f'p0:   {round(p0, 2)}')
         self.function_text.AddText(f'p1:   {round(p1, 2)}')
 
     def solution_by_root(self):
