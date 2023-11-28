@@ -68,7 +68,7 @@ class Task1(BasicGraphErrors):
     """Решение задачи 1."""
 
     def _likelihood_function(self, params):
-        """Функция правдоподобия."""
+        """Отрицательный логарифм функции правдоподобия."""
         a, b = params
         residuals = self.points[:, 1] - a * self.points[:, 0] + b
         likelihoods = (
@@ -77,7 +77,7 @@ class Task1(BasicGraphErrors):
         )
         # Возвращаем отрицательный логарифм функции правдоподобия
         # (так как minimize ищет минимум)
-        return -np.sum(likelihoods) 
+        return -np.sum(likelihoods)
 
     def solution_by_scipy(self):
         """Решение №1.
