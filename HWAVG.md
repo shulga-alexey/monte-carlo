@@ -1,6 +1,6 @@
 # Методы обработки экспериментальных данных в физике частиц
 
-1. Код решений задач находится в файле [```hw_awg.py```](https://github.com/shulga-alexey/monte-carlo/blob/26074baae410c5c25e9961b0a22a7881fd249d0b/hw_awg.py).
+1. Код решений задач находится в файле [```hw_avg.py```](https://github.com/shulga-alexey/monte-carlo/blob/26074baae410c5c25e9961b0a22a7881fd249d0b/hw_awg.py).
 2. Сгенерированные результаты можно найти в директории [```./img/hw_awg```](https://github.com/shulga-alexey/monte-carlo/tree/26074baae410c5c25e9961b0a22a7881fd249d0b/img/hw_awg).
 
 ## Задача 1

@@ -7,7 +7,7 @@ from array import array
 from time import sleep
 
 import numpy as np
-from ROOT import TF1, TCanvas, TGraphErrors, TPaveText
+from ROOT import TF1, TCanvas, TGraphErrors, TPaveText, TRandom3
 from scipy.optimize import minimize
 
 
@@ -40,12 +40,18 @@ class BasicGraphErrors:
         self.graph.GetYaxis().SetTitle('Y title')
 
         self.graph_text = TPaveText(0.67, 0.6, 0.87, 0.45, "NDC")
+        self.graph_text.SetTextAlign(12)
+        self.graph_text.SetFillColor(43)
+        self.graph_text.AddText(' RED: Fit(pol1, L)')
 
-        self.function = TF1('fun1', '[0]*x+[1]', 0, 100)
+        self.function = TF1('fun1', '[0]*x+[1]', -100, 100)
         self.function.SetLineColor(4)
         self.function.SetLineWidth(2)
 
         self.function_text = TPaveText(0.15, 0.6, 0.28, 0.5, "NDC")
+        self.function_text.SetTextAlign(12)
+        self.function_text.SetFillColor(43)
+        self.function_text.AddText('BLUE: scipy')
 
         self()
 
@@ -67,22 +73,22 @@ class BasicGraphErrors:
 class Task1(BasicGraphErrors):
     """Решение задачи 1."""
 
+    STD = 0.2
+
     def _likelihood_function(self, params):
         """Отрицательный логарифм функции правдоподобия."""
-        a, b = params
-        residuals = self.points[:, 1] - a * self.points[:, 0] - b
+        p1, p0 = params
+        residuals = self.points[:, 1] - p1 * self.points[:, 0] - p0
         likelihoods = (
-            -np.log(2 * np.pi) / 2 - np.log(self.errors[:, 1]) -
-            ((residuals / self.errors[:, 1]) ** 2) / 2
+            -np.log(2 * np.pi) / 2 - np.log(self.STD)
+            - ((residuals / self.STD) ** 2) / 2
         )
-        # Возвращаем отрицательный логарифм функции правдоподобия
-        # (так как minimize ищет минимум)
         return -np.sum(likelihoods)
 
     def solution_by_scipy(self):
         """Решение №1.
 
-        1. Определяем функцию правдоподобия _likelihood_function
+        1. Определяем функцию правдоподобия
         2. Осуществляем поиск максимума функции правдоподобия
         """
         initial_guess = [0, 0]
@@ -91,9 +97,6 @@ class Task1(BasicGraphErrors):
 
         self.function.SetParameters(p1, p0)
 
-        self.function_text.SetTextAlign(12)
-        self.function_text.SetFillColor(43)
-        self.function_text.AddText('BLUE: scipy')
         self.function_text.AddText(f'p0:   {round(p0, 2)}')
         self.function_text.AddText(f'p1:   {round(p1, 2)}')
 
@@ -112,10 +115,7 @@ class Task1(BasicGraphErrors):
             round(self.graph.GetFunction('pol1').GetParError(1), 2)
         )
 
-        self.graph_text.SetTextAlign(12)
-        self.graph_text.SetFillColor(43)
-        self.graph_text.AddText(' RED: Fit(pol1, L)')
-        self.graph_text.AddText(f'Chi^2/ndf: {params[0]} / 3')
+        self.graph_text.AddText(f'Chi^2/n: {params[0]} / 3')
         self.graph_text.AddText(f'p0:        {params[1]} +/- {params[3]}')
         self.graph_text.AddText(f'p1:        {params[2]} +/- {params[4]}')
 
@@ -126,18 +126,13 @@ class Task1(BasicGraphErrors):
 
 
 if __name__ == '__main__':
-    Task1(
-        1,
-        [[15, 18], [19, 21], [23, 26]],
-        [[0.1, 0.15], [0.2, 0.25], [0.3, 0.35]]
-    )
-    Task1(
-        2,
-        [[1, 0], [3, 2], [6, 3]],
-        [[0.19, 0.15], [0.21, 0.2], [0.33, 0.35]]
-    )
-    Task1(
-        3,
-        [[1, -2], [3, 2], [6, 5]],
-        [[0.19, 0.15], [0.21, 0.21], [0.33, 0.35]]
-    )
+    ex, ey = TRandom3(seed=42).Gaus, TRandom3(seed=4242).Gaus
+    errors = [[abs(ex(0, Task1.STD)), abs(ey(0, Task1.STD))] for _ in range(3)]
+    points_data = [
+        [[1, 8], [3, 11.1], [6, 14.9]],
+        [[15, 28], [19, 31.5], [23, 36]],
+        [[1, 11], [3, 11.9], [6, 14]],
+    ]
+
+    for num, points in enumerate(points_data, start=1):
+        Task1(num, points, errors)
