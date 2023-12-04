@@ -53,3 +53,6 @@
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task8%20(B)%3A%20Poisson(lambda%3D20).png)
 
 ![Image alt](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw5/Task8%20(C)%3A%20Poisson(lambda%3D100).png)
+
+
+## ДЗ№6 (задачи 1-8): файл hw6.py

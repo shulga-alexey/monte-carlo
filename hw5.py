@@ -2,10 +2,12 @@
 from math import exp, factorial, modf, sqrt
 from random import gauss, random
 
-from mixins import Basic
+from mixins import BasicHist
+
+BasicHist.HW_NUM = 5
 
 
-class Task1(Basic):
+class Task1(BasicHist):
     """Задание 1."""
 
     def __call__(self, g, M, m):
@@ -16,7 +18,7 @@ class Task1(Basic):
             self.histogram.Fill(num)
 
 
-class Task2(Basic):
+class Task2(BasicHist):
     """Задание 2."""
 
     def __call__(self, n, p):
@@ -42,7 +44,7 @@ class Task2(Basic):
         )
 
 
-class Task3(Basic):
+class Task3(BasicHist):
     """Задание 3."""
 
     def __call__(self, n, p):
@@ -68,7 +70,7 @@ class Task3(Basic):
         )
 
 
-class Task4(Basic):
+class Task4(BasicHist):
     """Задание 4."""
 
     def __call__(self, n, p):
@@ -91,7 +93,7 @@ class Task4(Basic):
         return (n ** m) / factorial(m) * exp(-n)
 
 
-class Task5(Basic):
+class Task5(BasicHist):
     """Задание 5."""
 
     def __call__(self, M, intpart=True):
@@ -111,7 +113,7 @@ class Task5(Basic):
         print(f'cor = {cov * 12 / M}')
 
 
-class Task7(Basic):
+class Task7(BasicHist):
     """Задание 7."""
 
     def __call__(self, n, p):
@@ -122,7 +124,7 @@ class Task7(Basic):
             self.histogram.Fill(intpart)
 
 
-class Task8(Basic):
+class Task8(BasicHist):
     """Задание 8."""
 
     def __call__(self, lmbd):
