@@ -8,11 +8,9 @@
 
 _Пояснения:_
 
-Пусть  $`ex, ey ~ N(0, std^2)`$. Тогда учитывая $`y = a*x + b + ey`$, находим, что $`y ~ N(a*x + b, std^2)`$. Таким образом, для логарифма функции правдоподобия:
+![](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw_avg/note1.png)
 
-$`ln(L(a, b)) = \sum (-ln(2*pi)/2 - ln(std) - (dy_i/std)^2/2)`$, где $`dy_i = y_i - a*x_i - b`$
-
-Некоторые результаты работы программы c различными параметрами:
+_Некоторые результаты работы программы c различными параметрами:_
 
 ![](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw_avg/Task1_1.png)
 
