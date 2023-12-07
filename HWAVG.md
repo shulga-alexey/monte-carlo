@@ -16,4 +16,3 @@ _Некоторые результаты работы программы c ра�
 
 ![](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw_avg/Task1_2.png)
 
-![](https://github.com/shulga-alexey/monte-carlo/blob/main/img/hw_avg/Task1_3.png)
