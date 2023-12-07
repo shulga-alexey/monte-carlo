@@ -69,7 +69,7 @@ class BasicGraphErrors:
         self.test_function.SetLineColor(28)
         self.test_function.SetLineWidth(2)
 
-        self.graph_text = ROOT.TPaveText(0.63, 0.6, 0.9, 0.45, "NDC")
+        self.graph_text = ROOT.TPaveText(0.67, 0.6, 0.9, 0.45, "NDC")
         self.graph_text.SetFillColor(43)
         self.graph_text.SetTextAlign(12)
 
