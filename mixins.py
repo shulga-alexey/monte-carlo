@@ -61,17 +61,25 @@ class BasicGraphErrors:
         self.graph.GetXaxis().SetTitle('X title')
         self.graph.GetYaxis().SetTitle('Y title')
 
-        self.graph_text = ROOT.TPaveText(0.67, 0.6, 0.9, 0.45, "NDC")
-        self.graph_text.SetTextAlign(12)
-        self.graph_text.SetFillColor(43)
-
-        self.function = ROOT.TF1('fun1', '[0]*x+[1]', -100, 100)
+        self.function = ROOT.TF1('fun', '[0]*x+[1]', -100, 100)
         self.function.SetLineColor(4)
         self.function.SetLineWidth(2)
 
+        self.test_function = ROOT.TF1('fun_test', '[0]*x+[1]', -100, 100)
+        self.test_function.SetLineColor(28)
+        self.test_function.SetLineWidth(2)
+
+        self.graph_text = ROOT.TPaveText(0.63, 0.6, 0.9, 0.45, "NDC")
+        self.graph_text.SetFillColor(43)
+        self.graph_text.SetTextAlign(12)
+
         self.function_text = ROOT.TPaveText(0.15, 0.6, 0.38, 0.4, "NDC")
-        self.function_text.SetTextAlign(12)
         self.function_text.SetFillColor(43)
+        self.function_text.SetTextAlign(12)
+
+        self.test_function_text = ROOT.TPaveText(0.15, 0.82, 0.38, 0.67, "NDC")
+        self.test_function_text.SetFillColor(43)
+        self.test_function_text.SetTextAlign(12)
 
         self()
 
@@ -79,6 +87,8 @@ class BasicGraphErrors:
         self.graph_text.Draw('same')
         self.function.Draw('same')
         self.function_text.Draw('same')
+        self.test_function.Draw('same')
+        self.test_function_text.Draw('same')
 
         self.canvas.Update()
         self.canvas.GetFrame().SetFillColor(0)
