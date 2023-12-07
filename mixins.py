@@ -61,19 +61,17 @@ class BasicGraphErrors:
         self.graph.GetXaxis().SetTitle('X title')
         self.graph.GetYaxis().SetTitle('Y title')
 
-        self.graph_text = ROOT.TPaveText(0.67, 0.6, 0.87, 0.45, "NDC")
+        self.graph_text = ROOT.TPaveText(0.67, 0.6, 0.9, 0.45, "NDC")
         self.graph_text.SetTextAlign(12)
         self.graph_text.SetFillColor(43)
-        self.graph_text.AddText(' RED: Fit(pol1, L)')
 
         self.function = ROOT.TF1('fun1', '[0]*x+[1]', -100, 100)
         self.function.SetLineColor(4)
         self.function.SetLineWidth(2)
 
-        self.function_text = ROOT.TPaveText(0.15, 0.6, 0.28, 0.5, "NDC")
+        self.function_text = ROOT.TPaveText(0.15, 0.6, 0.38, 0.4, "NDC")
         self.function_text.SetTextAlign(12)
         self.function_text.SetFillColor(43)
-        self.function_text.AddText('BLUE: scipy')
 
         self()
 
@@ -87,6 +85,6 @@ class BasicGraphErrors:
         self.canvas.GetFrame().SetBorderSize(12)
         self.canvas.Modified()
         self.canvas.Update()
-        self.canvas.Print(f'./img/hw_awg/Task1_{name}.png')
+        self.canvas.Print(f'./img/hw_avg/Task1_{name}.png')
 
         sleep(4)
