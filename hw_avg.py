@@ -3,10 +3,24 @@
 Курс 'Методы обработки экспериментальных данных в физике частиц'.
 """
 import numpy as np
-from ROOT import TRandom3
+from ROOT import TFile, TRandom3
 from scipy.optimize import minimize
 
-from mixins import BasicGraphErrors
+from mixins import BasicGraphErrors, BasicHist2DAnim
+
+
+class Task2(BasicHist2DAnim):
+    """Решение задачи 2."""
+
+    def __call__(self):
+        """Решение."""
+        file = TFile.Open('decay3.root')
+        tree = file.Decay3
+
+        for entry in tree:
+            self.histogram.Fill(
+                (entry.LV2 + entry.LV3).M2(), (entry.LV1 + entry.LV2).M2()
+            )
 
 
 class Task1(BasicGraphErrors):
@@ -93,7 +107,7 @@ class Task1(BasicGraphErrors):
         self.solution_by_scipy_without_x_errors()
 
 
-if __name__ == '__main__':
+if __name__ is None:
     ex, ey = TRandom3(seed=42).Gaus, TRandom3(seed=4242).Gaus
     errors = [
         [abs(ex(0, Task1.STDX)), abs(ey(0, Task1.STDY))]
@@ -106,3 +120,6 @@ if __name__ == '__main__':
 
     for num, points in enumerate(points_data, start=1):
         Task1(num, points, errors)
+
+if __name__ == '__main__':
+    Task2()
