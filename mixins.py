@@ -1,4 +1,5 @@
 """Миксины для классов Tasks."""
+import os
 from array import array
 from time import sleep
 
@@ -31,6 +32,51 @@ class BasicHist:
         canvas.Print(f'./img/hw{self.HW_NUM}/{name}.png')
 
         sleep(4)
+
+
+class BasicHist2DAnim:
+    """Класс для создания 2D гистограмм."""
+
+    def __init__(self):
+        """Конструктор."""
+        self.canvas = ROOT.TCanvas('Сanvas', 'Histogram', 200, 10, 700, 500)
+        self.canvas.SetFillColor(42)
+        self.canvas.SetFrameFillColor(33)
+        self.canvas.GetFrame().SetFillColor(21)
+        self.canvas.GetFrame().SetBorderSize(6)
+        self.canvas.GetFrame().SetBorderMode(-1)
+
+        self.histogram = ROOT.TH2F(
+            'DalitzHist', 'Dalitz Histogram', 40, 0, 2, 40, 0, 2
+        )
+        self.histogram.SetFillColor(48)
+
+        self.histogram.SetXTitle('(m23)^2')
+        self.histogram.SetYTitle('(m12)^2')
+
+        self()
+
+        # self._save_img()
+        self._save_anim()
+
+    def _save_anim(self):
+        self.histogram.Draw('SURF3')
+        self.canvas.Update()
+
+        for i in range(10):
+            self.canvas.SaveAs(f'./img/frame/frame{i}.png')
+            self.canvas.SetPhi(96 + 36 * i)
+
+        os.system(
+            'convert -delay 250 -loop 0 '
+            './img/frame/frame*.png ./img/hw_avg/Task2_2.gif'
+        )
+
+    def _save_img(self):
+        self.histogram.SetMarkerStyle(6)
+        self.histogram.Draw()
+        self.canvas.Update()
+        self.canvas.SaveAs('./img/hw_avg/Task2_1.png')
 
 
 class BasicGraphErrors:
