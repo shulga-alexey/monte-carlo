@@ -50,14 +50,14 @@ class BasicHist2DAnim:
             'DalitzHist', 'Dalitz Histogram', 40, 0, 2, 40, 0, 2
         )
         self.histogram.SetFillColor(48)
-
-        self.histogram.SetXTitle('(m23)^2')
-        self.histogram.SetYTitle('(m12)^2')
+        self.histogram.SetMarkerStyle(6)
+        self.histogram.SetXTitle(r'm^{2}_{12}')
+        self.histogram.SetYTitle(r'm^{2}_{23}')
 
         self()
 
-        # self._save_img()
-        self._save_anim()
+        self._save_img()
+        # self._save_anim()
 
     def _save_anim(self):
         self.histogram.Draw('SURF3')
@@ -73,9 +73,9 @@ class BasicHist2DAnim:
         )
 
     def _save_img(self):
-        self.histogram.SetMarkerStyle(6)
         self.histogram.Draw()
         self.canvas.Update()
+        sleep(5)
         self.canvas.SaveAs('./img/hw_avg/Task2_1.png')
 
 
