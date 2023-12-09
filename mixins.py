@@ -51,8 +51,8 @@ class BasicHist2DAnim:
         )
         self.histogram.SetFillColor(48)
         self.histogram.SetMarkerStyle(6)
-        self.histogram.SetXTitle(r'm^{2}_{12}')
-        self.histogram.SetYTitle(r'm^{2}_{23}')
+        self.histogram.SetXTitle(r'm^{2}_{23}')
+        self.histogram.SetYTitle(r'm^{2}_{12}')
 
         self()
 
@@ -75,7 +75,6 @@ class BasicHist2DAnim:
     def _save_img(self):
         self.histogram.Draw()
         self.canvas.Update()
-        sleep(5)
         self.canvas.SaveAs('./img/hw_avg/Task2_1.png')
 
 
