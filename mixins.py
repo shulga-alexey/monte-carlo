@@ -63,12 +63,12 @@ class BasicHist2D:
         self.canvas.Update()
 
         for i in range(10):
-            self.canvas.SaveAs(f'./img/frame/frame{i}.png')
+            self.canvas.SaveAs(f'./img/hw_avg/frame/frame{i}.png')
             self.canvas.SetPhi(96 + 36 * i)
 
         os.system(
             'convert -delay 250 -loop 0 '
-            './img/frame/frame*.png ./img/hw_avg/Task2_2.gif'
+            './img/hw_avg/frame/frame*.png ./img/hw_avg/Task2_2.gif'
         )
 
     def _save_img(self):
