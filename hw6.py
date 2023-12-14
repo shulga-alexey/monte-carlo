@@ -1,6 +1,7 @@
 """Решения задач домашнего задания №6."""
-import ROOT
 import math
+
+import ROOT
 
 from mixins import BasicHist
 
