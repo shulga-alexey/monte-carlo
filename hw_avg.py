@@ -6,15 +6,15 @@ import numpy as np
 from ROOT import TFile, TRandom3
 from scipy.optimize import minimize
 
-from mixins import BasicGraphErrors, BasicHist2DAnim
+from mixins import BasicGraphErrors, BasicHist2D
 
 
-class Task2(BasicHist2DAnim):
+class Task2(BasicHist2D):
     """Решение задачи 2."""
 
     def __call__(self):
         """Решение."""
-        file = TFile.Open('decay3.root')
+        file = TFile.Open('data/decay3.root')
         tree = file.Decay3
 
         for entry in tree:
