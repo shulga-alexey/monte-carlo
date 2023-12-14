@@ -10,9 +10,15 @@ BasicHist.HW_NUM = 6
 class Task1(BasicHist):
     """Задача 1."""
 
-    def __call__(self):
+    def __call__(self, lmbd):
         """Решение."""
-        pass
+        random = ROOT.TRandom3(seed=42).Rndm
+
+        for _ in range(super().ENTRIES):
+            num = (
+                -math.log(1 - random()) / lmbd
+            )
+            self.histogram.Fill(num)
 
 
 class Task3(BasicHist):

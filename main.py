@@ -43,7 +43,12 @@ if argv[1] == '5':
                       lmbd=100)
 elif argv[1] == '6':
     if argv[2] == '1':
-        pass
+        if argv[3] == 'a':
+            hw6.Task1('Task1 (A): Exp(lmbd=1)', 200, 0, 10, lmbd=1)
+        elif argv[3] == 'b':
+            hw6.Task1('Task1 (B): Exp(lmbd=100)', 200, 0, 0.1, lmbd=100)
+        elif argv[3] == 'c':
+            hw6.Task1('Task1 (C): Exp(lmbd=1000)', 200, 0, 0.01, lmbd=1000)
     elif argv[2] == '3':
         if argv[3] == 'a':
             hw6.Task3('Task3 (A): HG(g=0)', 200, -1, 1, g=0)
