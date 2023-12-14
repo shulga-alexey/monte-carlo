@@ -1,7 +1,7 @@
 """Миксины для классов Tasks."""
 import os
+import time
 from array import array
-from time import sleep
 
 import numpy as np
 import ROOT
@@ -11,7 +11,7 @@ class BasicHist:
     """Класс для создания гистограмм."""
 
     ENTRIES = 100000
-    HW_NUM = 0
+    HW_NUM = None
 
     def __init__(self, name, *histargs, **solargs):
         """Создаются экземпляры Canvas и Histogram, сохраняется гистограмма."""
@@ -31,10 +31,10 @@ class BasicHist:
         canvas.Update()
         canvas.Print(f'./img/hw{self.HW_NUM}/{name}.png')
 
-        sleep(4)
+        time.sleep(4)
 
 
-class BasicHist2DAnim:
+class BasicHist2D:
     """Класс для создания 2D гистограмм."""
 
     def __init__(self):
@@ -42,9 +42,8 @@ class BasicHist2DAnim:
         self.canvas = ROOT.TCanvas('Сanvas', 'Histogram', 200, 10, 700, 500)
         self.canvas.SetFillColor(42)
         self.canvas.SetFrameFillColor(33)
-        self.canvas.GetFrame().SetFillColor(21)
-        self.canvas.GetFrame().SetBorderSize(6)
-        self.canvas.GetFrame().SetBorderMode(-1)
+        self.canvas.SetBorderSize(6)
+        self.canvas.SetBorderMode(-1)
 
         self.histogram = ROOT.TH2F(
             'DalitzHist', 'Dalitz Histogram', 40, 0, 2, 40, 0, 2
@@ -142,4 +141,32 @@ class BasicGraphErrors:
         self.canvas.Update()
         self.canvas.Print(f'./img/hw_avg/Task1_{name}.png')
 
-        sleep(4)
+        time.sleep(4)
+
+
+class BasicGraph2D:
+    """Базовый класс для отрисовки трехмерного графика."""
+
+    ENTRIES = 100000
+    HW_NUM = None
+
+    def __init__(self, name, **solargs):
+        """Конструктор."""
+        self.graph = ROOT.TGraph2D()
+        self.graph.SetMargin(0.1)
+        self.graph.SetTitle(name)
+        self.graph.SetFillColor(48)
+
+        self(**solargs)
+
+        self.canvas = ROOT.TCanvas('Сanvas', 'Graph', 200, 10, 700, 500)
+        self.canvas.SetFillColor(42)
+        self.canvas.SetFrameFillColor(33)
+        self.canvas.SetBorderSize(6)
+        self.canvas.SetBorderMode(-1)
+
+        self.graph.Draw('SURF3')
+        self.canvas.Update()
+        self.canvas.Print(f'./img/hw{self.HW_NUM}/{name}.png')
+
+        time.sleep(4)
