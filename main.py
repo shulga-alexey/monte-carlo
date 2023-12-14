@@ -1,8 +1,10 @@
-"""Отвечает за запуск примеров заданий."""
+"""Запуск примеров заданий."""
 from sys import argv
 
 import hw5
 import hw6
+import hw7
+import hw8
 
 if argv[1] == '5':
     if argv[2] == '1':
@@ -62,3 +64,24 @@ elif argv[1] == '6':
     elif argv[2] == '6':
         hw6.Task6('Task6 : f(x in (0,1)) = x, f(x in (1, 2)) = 2^(-x)',
                   200, 0, 2)
+elif argv[1] == '7':
+    if argv[2] == '1':
+        hw7.Task1('Task1 : Cylinder(r=1,h=1)')
+    elif argv[2] == '2':
+        hw7.Task2()
+    elif argv[2] == '3':
+        hw7.Task3('Task3 : Tetrahedron')
+    elif argv[2] == '4':
+        hw7.Task4('Task4 : Pentagon')
+    elif argv[2] == '5':
+        hw7.Task5('Task5 : Icosahedron')
+elif argv[1] == '8':
+    if argv[2] == '1':
+        hw8.Task1('Task1 : f(0<u<2) = 5 * 12^-1 * (1 + (u-1)^4)', 200, 0, 2)
+    elif argv[2] == '2':
+        if argv[3] == 'a':
+            hw8.Task2('Task2 (A): ', 200, -1, 1, g=0.1)
+        elif argv[3] == 'b':
+            hw8.Task2('Task2 (B): ', 200, -1, 1, g=0.5)
+        elif argv[3] == 'c':
+            hw8.Task2('Task2 (C): ', 200, -1, 1, g=0.9)

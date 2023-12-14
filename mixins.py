@@ -169,4 +169,4 @@ class BasicGraph2D:
         self.canvas.Update()
         self.canvas.Print(f'./img/hw{self.HW_NUM}/{name}.png')
 
-        time.sleep(4)
+        time.sleep(10)
