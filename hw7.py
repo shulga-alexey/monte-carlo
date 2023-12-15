@@ -1,6 +1,5 @@
 """Решения задач домашнего задания №7."""
 import math
-import time
 
 import numpy as np
 import ROOT

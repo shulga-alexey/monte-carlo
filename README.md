@@ -4,8 +4,8 @@
 
 1. ДЗ№5 (задачи 1-6,8): файл hw5.py [```hw5.py```](https://github.com/shulga-alexey/monte-carlo/blob/main/hw5.py)
 2. ДЗ№6 (задачи 1,3,5,6): файл [```hw6.py```](https://github.com/shulga-alexey/monte-carlo/blob/main/hw6.py)
-3. ДЗ№7 (задачи 1-5): файл [```hw7.py```](https://github.com/shulga-alexey/monte-carlo/blob/main/hw7.py)
-4. ДЗ№8 (задачи 1,2): файл [```hw8.py```](https://github.com/shulga-alexey/monte-carlo/blob/main/hw8.py)
+3. ДЗ№7 (задачи 1-4): файл [```hw7.py```](https://github.com/shulga-alexey/monte-carlo/blob/main/hw7.py)
+4. ДЗ№8 (задачи 1-2): файл [```hw8.py```](https://github.com/shulga-alexey/monte-carlo/blob/main/hw8.py)
 
 ## Установка и запуск
 
@@ -63,3 +63,28 @@
 
 
 ## ДЗ№6 (задачи 1,3,5,6): файл hw6.py
+
+**Задание №1 ::**
+
+**Задание №3 ::**
+
+**Задание №5 ::**
+
+**Задание №6 ::**
+
+
+## ДЗ№5 (задачи 1-4): файл hw5.py
+
+**Задание №1 ::**
+
+**Задание №2 ::**
+
+**Задание №3 ::**
+
+**Задание №4 ::**
+
+## ДЗ№5 (задачи 1-2): файл hw5.py
+
+**Задание №1 ::**
+
+**Задание №2 ::**
