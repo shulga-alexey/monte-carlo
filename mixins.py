@@ -144,6 +144,38 @@ class BasicGraphErrors:
         time.sleep(4)
 
 
+class BasicGraph:
+    """Базовый класс для отрисовки графика."""
+
+    ENTRIES = 100000
+    HW_NUM = None
+
+    def __init__(self, name):
+        """Конструктор."""
+        self.graph = ROOT.TGraph()
+        self.graph.SetTitle(name)
+        self.graph.GetXaxis().SetTitle('X title')
+        self.graph.GetYaxis().SetTitle('Y title')
+
+        self()
+
+        self.canvas = ROOT.TCanvas('c1', 'Graph', 200, 10, 700, 600)
+        self.canvas.SetGrid()
+        self.canvas.SetBorderSize(12)
+        self.canvas.SetFillColor(42)
+
+        self.graph.Draw('AP')
+        self.canvas.Update()
+        self.canvas.GetFrame().SetFillColor(0)
+        self.canvas.GetFrame().SetBorderSize(12)
+        self.canvas.Modified()
+        self.canvas.Update()
+        self.canvas.Draw()
+        self.canvas.Print(f'./img/hw{self.HW_NUM}/{name}.png')
+
+        time.sleep(5)
+
+
 class BasicGraph2D:
     """Базовый класс для отрисовки трехмерного графика."""
 

@@ -73,15 +73,16 @@ elif argv[1] == '7':
         hw7.Task3('Task3 : Tetrahedron')
     elif argv[2] == '4':
         hw7.Task4('Task4 : Pentagon')
-    elif argv[2] == '5':
-        hw7.Task5('Task5 : Icosahedron')
 elif argv[1] == '8':
     if argv[2] == '1':
         hw8.Task1('Task1 : f(0<u<2) = 5 * 12^-1 * (1 + (u-1)^4)', 200, 0, 2)
     elif argv[2] == '2':
         if argv[3] == 'a':
-            hw8.Task2('Task2 (A): ', 200, -1, 1, g=0.1)
+            hw8.Task2('Task2 (A): p(u)=c1*R(u)+c2*HG(u), c1=0.1, g=0.98',
+                      200, -1, 1, c1=0.1)
         elif argv[3] == 'b':
-            hw8.Task2('Task2 (B): ', 200, -1, 1, g=0.5)
+            hw8.Task2('Task2 (B): p(u)=c1*R(u)+c2*HG(u), c1=0.5, g=0.98',
+                      200, -1, 1, c1=0.5)
         elif argv[3] == 'c':
-            hw8.Task2('Task2 (C): ', 200, -1, 1, g=0.9)
+            hw8.Task2('Task2 (C): p(u)=c1*R(u)+c2*HG(u), c1=0.9, g=0.98',
+                      200, -1, 1, c1=0.9)
